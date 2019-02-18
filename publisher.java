@@ -52,4 +52,27 @@ public class Publisher {
         client.publish(topic, message);
         System.out.println("Publishing"+message);
     }
+
+    public byte[] getMacAddress(){
+        byte[] mac = new byte[6];
+        try{
+            InetAddress address = InetAddress.getLocalHost();
+            NetworkInterface nwi = NetworkInterface.getByInetAddress(address);
+            mac = nwi.getHardwareAddress();
+            System.out.println(mac);
+        } catch(Exception e) { System.out.println(e); }
+        return mac;
+  }
+
+  //main function to call the startPublishing
+  public static void main(String args[]) {
+    try {
+        System.out.println("MQTT Broker: " + BROKER_URL);
+        new Publisher().startPublishing();
+    } catch (MqttException e) {System.out.println(e); }
+}
+
+
+
+
 }
