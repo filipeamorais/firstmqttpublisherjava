@@ -41,7 +41,6 @@ public class Publisher {
                 client.disconnect();
             } catch (Exception e) {e.printStackTrace();}
         }
-    }
 
     //generate temperatures
     private void publishTemperature() throws MqttException {
@@ -62,17 +61,13 @@ public class Publisher {
             System.out.println(mac);
         } catch(Exception e) { System.out.println(e); }
         return mac;
-  }
+    }
 
   //main function to call the startPublishing
   public static void main(String args[]) {
-    try {
-        System.out.println("MQTT Broker: " + BROKER_URL);
-        new Publisher().startPublishing();
-    } catch (MqttException e) {System.out.println(e); }
-}
-
-
-
-
+        try {
+            System.out.println("MQTT Broker: " + BROKER_URL);
+            new Publisher().startPublishing();
+        } catch (MqttException e) {System.out.println(e); }
+    }
 }
