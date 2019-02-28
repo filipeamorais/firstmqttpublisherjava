@@ -20,7 +20,7 @@ public class Publisher {
         System.out.println("Client ID="+clientId);
             try{
                 client = new MqttClient (BROKER_URL, clientId);
-                MqttConnectOptions options = MqttConnectOptions();
+                MqttConnectOptions options = new MqttConnectOptions();
                 options.setCleanSession(true);
                 final MqttTopic temperatureTopic = client.getTopic(topic);
                 options.setWill(temperatureTopic, "I'm gone".getBytes(), 2, true);
